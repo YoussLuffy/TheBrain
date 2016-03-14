@@ -47,8 +47,8 @@ public class ElementAdapter {
 	}
 
 	public Cursor getAllChar() {
-		String[] selectAll = { colonne_id, colonne_ThemeId, colonne_Word, colonne_Description,
-				colonne_Description };
+		String[] selectAll = { colonne_id, colonne_ThemeId, colonne_Word,
+				colonne_Description, colonne_Description };
 		Cursor c = db.query(tableName, selectAll, null, null, null, null, null);
 		return c;
 	}
@@ -58,22 +58,31 @@ public class ElementAdapter {
 		try {
 			String query = "DELETE FROM Quiz WHERE id=" + id;
 		} catch (SQLiteException e) {
-			
+
 		}
 
 		db.delete(tableName, colonne_id + " = ?",
 				new String[] { String.valueOf(id) });
 	}
-	
+
 	public void delTheme(int themeId) {
-
-		try {
-			String query = "DELETE FROM Quiz WHERE theme=" + themeId;
-		} catch (SQLiteException e) {
-			
-		}
-
 		db.delete(tableName, colonne_id + " = ?",
 				new String[] { String.valueOf(themeId) });
+	}
+
+	public void editWord(int id, String word) {
+		ContentValues values = new ContentValues();
+		values.put(colonne_Word, word);
+		String clause = "_id=" + id;
+		
+		db.update(tableName, values, clause, null);
+	}
+
+	public void editDescription(int id, String description) {
+		ContentValues values = new ContentValues();
+		values.put(colonne_Description, description);
+		String clause = "_id=" + id;
+		
+		db.update(tableName, values, clause, null);
 	}
 }

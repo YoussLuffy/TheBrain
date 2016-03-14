@@ -36,4 +36,12 @@ public class ThemeAdapter {
 		values.put(colonne_Name, s.getMode());
 		return db.insert(tableName, null, values);
 	}
+	
+	public void editNames(int id, String name) {
+		ContentValues values = new ContentValues();
+		values.put(colonne_Name, name);
+		String clause = "_id=" + id;
+		
+		db.update(tableName, values, clause, null);
+	}
 }
