@@ -1,24 +1,24 @@
 package be.Stude.stude.struct;
 
 public class Element {
-	private String theme;
+	private int themeId;
 	private String word;
 	private String description;
 	private int check;
 	
-	public Element(String theme, String word, String description) {
-		this.theme = theme;
+	public Element(int themeId, String word, String description) {
+		this.themeId = themeId;
 		this.word = word;
 		this.description = description;
 		check = 0;
 	}
 	
-	public String getTheme() {
-		return theme;
+	public int getThemeId() {
+		return themeId;
 	}
 
-	public void setTheme(String theme) {
-		this.theme = theme;
+	public void setThemeId(int theme) {
+		this.themeId = theme;
 	}
 
 	public String getWord() {

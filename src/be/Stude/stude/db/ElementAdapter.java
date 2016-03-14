@@ -11,7 +11,7 @@ public class ElementAdapter {
 	public static String dbName = "BrainTrain";
 	public static String tableName = "Quiz";
 	public static String colonne_id = "_id";
-	public static String colonne_Theme = "Theme";
+	public static String colonne_ThemeId = "Theme";
 	public static String colonne_Word = "Word";
 	public static String colonne_Description = "Description";
 	public static String colonne_Check = "Check";
@@ -38,7 +38,7 @@ public class ElementAdapter {
 	public long insertElement(Element e) {
 		ContentValues values = new ContentValues();
 
-		values.put(colonne_Theme, e.getTheme());
+		values.put(colonne_ThemeId, e.getThemeId());
 		values.put(colonne_Word, e.getWord());
 		values.put(colonne_Description, e.getDescription());
 		values.put(colonne_Check, e.getCheck());
@@ -47,7 +47,7 @@ public class ElementAdapter {
 	}
 
 	public Cursor getAllChar() {
-		String[] selectAll = { colonne_id, colonne_Theme, colonne_Word, colonne_Description,
+		String[] selectAll = { colonne_id, colonne_ThemeId, colonne_Word, colonne_Description,
 				colonne_Description };
 		Cursor c = db.query(tableName, selectAll, null, null, null, null, null);
 		return c;
@@ -65,15 +65,15 @@ public class ElementAdapter {
 				new String[] { String.valueOf(id) });
 	}
 	
-	public void delTheme(String theme) {
+	public void delTheme(int themeId) {
 
 		try {
-			String query = "DELETE FROM Quiz WHERE theme=" + theme;
+			String query = "DELETE FROM Quiz WHERE theme=" + themeId;
 		} catch (SQLiteException e) {
 			
 		}
 
 		db.delete(tableName, colonne_id + " = ?",
-				new String[] { String.valueOf(theme) });
+				new String[] { String.valueOf(themeId) });
 	}
 }

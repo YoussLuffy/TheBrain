@@ -15,7 +15,7 @@ public class ElementHelper extends SQLiteOpenHelper {
 	private final String CREAT_REQUEST = "CREATE TABLE " 
 			+ ElementAdapter.tableName + " ( " 
 			+ ElementAdapter.colonne_id + " INTEGER PRIMARY KEY AUTOINCREMENT, "
-			+ ElementAdapter.colonne_Theme + " TEXT NOT NULL, "
+			+ ElementAdapter.colonne_ThemeId + " TEXT NOT NULL, "
 			+ ElementAdapter.colonne_Word + " TEXT NOT NULL, "
 			+ ElementAdapter.colonne_Description + " TEXT NOT NULL "
 			+ ElementAdapter.colonne_Check + " INT NULL, ";
